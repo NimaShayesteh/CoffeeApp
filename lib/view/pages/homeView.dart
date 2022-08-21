@@ -8,6 +8,27 @@ import '../widgets/coffee_type.dart';
 
  class HomeView extends GetResponsiveView{
 
+
+
+   //////list of coffee types
+
+   final List CoffeeTypes = [
+     ["Cupertino" , true],
+     ["Latte" , false],
+     ["Otte" , false],
+     ["Dotte" , false],
+     ["GHotte" , false],
+     ["Jotte" , false],
+   ];
+
+
+   void CoffeeTypeSelected(int index) {
+      setState(){
+        CoffeeTypes[index][1] = true;
+      }
+   }
+
+
    @override
    Widget build(BuildContext context)
    {
@@ -61,18 +82,19 @@ import '../widgets/coffee_type.dart';
            /////horizontal list of categories
 
            Container(
-             padding: EdgeInsets.symmetric(horizontal: 25),
+             padding: const EdgeInsets.symmetric(horizontal: 25),
              height: 40,
-            child: ListView(
-              scrollDirection:Axis.horizontal ,
-              children: [
-                CoffeeType(coffeeType: "cupertino",),
-                CoffeeType(coffeeType: "late",),
-                CoffeeType(coffeeType: "ette",),
-                CoffeeType(coffeeType: "mette",),
-                CoffeeType(coffeeType: "tette",)
-              ],
-            ),
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: CoffeeTypes.length,
+                itemBuilder: (context , index) {
+              return CoffeeType(
+                  coffeeType: CoffeeTypes[index][0],
+                  IsSelected: CoffeeTypes[index][1],
+                  onTap:() {
+                    CoffeeTypeSelected(index);
+                  });
+            }),
            ),
 
 
@@ -81,6 +103,7 @@ import '../widgets/coffee_type.dart';
              ListView(
                scrollDirection: Axis.horizontal,
                children: [
+                 CoffeeTitle(),
                  CoffeeTitle()
                ],
              ),

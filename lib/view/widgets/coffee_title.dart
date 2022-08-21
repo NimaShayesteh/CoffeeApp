@@ -6,7 +6,8 @@ class CoffeeTitle extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Padding(
-      padding: const EdgeInsets.only(left: 25.0 , bottom: 25),
+      padding: const EdgeInsets.only(left: 25.0 , bottom: 25.0
+      ),
       child: Container(
         padding : const EdgeInsets.all(12),
         width: 200,
